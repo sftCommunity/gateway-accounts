@@ -4,7 +4,6 @@ import { catchError } from 'rxjs';
 import { NATS_SERVICE } from 'src/config';
 import { Auth, Token, User } from './decorators';
 import { LoginUserDto, RegisterUserDto } from './dto';
-import { JwtPayload } from './interfaces';
 
 @Controller('auth')
 export class AuthController {
@@ -30,7 +29,7 @@ export class AuthController {
 
   @Get('verify')
   @Auth()
-  verifyToken(@User() user: JwtPayload, @Token() token: string) {
+  verifyToken(@User() user: any, @Token() token: string) {
     return { user, token };
   }
 }
